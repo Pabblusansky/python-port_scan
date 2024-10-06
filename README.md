@@ -17,7 +17,9 @@ Install the required dependencies:
 ```bash
 pip install scapy 
 ```
-3.Start the scanner using cmd:
+3.Install npcap from the official site: https://npcap.com
+
+4.Start the scanner using cmd:
 ```bash
 python main.py
 ```

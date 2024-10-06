@@ -2,7 +2,6 @@ from scapy.all import ICMP, IP, TCP, sr1
 import sys
 import socket
 from datetime import datetime
-#import tkinter as tk
 import json
 
 #Open Ports array
@@ -25,7 +24,7 @@ def scan_port(ip, port):
         elif response.haslayer(TCP) and response.getlayer(TCP).flags == 0x14:  # RST+ACK
             print(f"Port {port} ({ports.get(port, 'Unknown')}) is closed")
     else:
-        print(f"Port {port} ({ports.get(port, "Unknown")}) is filtered or no response")
+        print(f"Port {port} ({ports.get(port, 'Unknown')}) is filtered or no response")
 #Scan ports from a list of ports
 def scan_ports(ip):
     try:
