@@ -13,7 +13,7 @@ Supports external configuration file to store port information (in JSON format).
 ```bash
 git clone https://github.com/Pabblusansky/python-port_scan
 ```
-OR Download it using Code->Download ZIP
+OR Download it using Code->Download ZIP<br/>
 2.Install the required dependencies:
 ```bash
 pip install scapy 
@@ -25,7 +25,6 @@ pip install scapy
 python main.py
 ```
 ## Contributing
-
 Pull requests are welcome. For major changes/ideas, please open an issue first.
 # License
 This project is licensed under the MIT License. See the LICENSE file for more information.

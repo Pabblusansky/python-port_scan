@@ -3,7 +3,10 @@ import sys
 import socket
 from datetime import datetime
 import json
+import logging
 
+# Logging implementing
+logging.basicConfig(filename='port_scanner.log', level=logging.INFO)
 #Open Ports array
 open_ports = []
 # Function to load ports from JSON file
@@ -25,6 +28,7 @@ def scan_port(ip, port):
             print(f"Port {port} ({ports.get(port, 'Unknown')}) is closed")
     else:
         print(f"Port {port} ({ports.get(port, 'Unknown')}) is filtered or no response")
+    logging.info(f"Scanned port {port}: {'open' if port in open_ports else 'closed'}") # Logging the results
 #Scan ports from a list of ports
 def scan_ports(ip):
     try:
