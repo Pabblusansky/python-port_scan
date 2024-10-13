@@ -5,6 +5,7 @@ from datetime import datetime
 import json
 import logging
 import ipaddress
+import threading
 
 # Logging implementing
 logging.basicConfig(
@@ -15,6 +16,8 @@ logging.basicConfig(
 )
 #Open Ports array
 open_ports = []
+# Lock for thread-safe access to open_ports
+open_ports_lock = threading.Lock()
 # Function to load ports from JSON file
 def load_ports(filename):
     with open(filename, 'r') as f:
@@ -41,8 +44,15 @@ def scan_ports(ip):
         logging.info(f"\n=== Starting new scan on {ip} ===")
         print(f"Starting scan on {ip}")
         start_time = datetime.now()
+        # Thread scanning ports
+        threads = []
         for port in ports:
-            scan_port(ip, port)
+            thread = threading.Thread(target=scan_port(ip, port), args=(ip, port))
+            threads.append(thread)
+            thread.start()
+        for thread in threads:
+            thread.join()
+        
         end_time = datetime.now()
         print(f"Scan finished in {end_time - start_time}")
         print(f"Scanned {len(ports)} ports: {len(open_ports)} open, {len(ports) - len(open_ports)} closed")

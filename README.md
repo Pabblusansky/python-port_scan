@@ -7,6 +7,7 @@ Port Scanner is a simple and efficient port scanning application written in Pyth
 # Functions
 Scanning one or more ports on a given valid IP address.<br/>
 Detect open and closed ports and display information about each port.<br/>
+Thread based port scan for a fast scanning speed<br/>
 Supports external configuration file to store port information (in JSON format).<br/>
 Logging the results in a txt file.<br/>
 # Installation
